@@ -9,6 +9,8 @@ export interface SiteSettings {
   location: string;
   linkedin: string;
   github: string;
+  upworkUrl?: string;
+  fiverrUrl?: string;
   calendlyUrl: string;
   cvDownloadUrl: string;
   portfolioDownloadUrl: string;
@@ -23,6 +25,8 @@ export interface ImpactStat {
   label: string;
 }
 
+export interface ProjectMetric { label: string; value: string }
+
 export interface Project {
   id: string;
   title: string;
@@ -33,13 +37,15 @@ export interface Project {
   problem?: string;
   solution?: string;
   results?: string[];
-  metrics: { label: string; value: string }[];
+  metrics: ProjectMetric[];
   techStack: string[];
   industries: string[];
   duration: string;
   priceRange?: string;
   featured: boolean;
   date: string;
+  image?: string;
+  video?: string;
 }
 
 export interface Experience {
@@ -69,6 +75,7 @@ export interface Service {
   outcomes: string[];
   techStack: string[];
   icon: string;
+  highlight?: boolean;
 }
 
 export interface Testimonial {
@@ -78,6 +85,8 @@ export interface Testimonial {
   company: string;
   text: string;
   metric?: string;
+  platform?: "upwork" | "fiverr" | "linkedin" | "direct";
+  rating?: number;
 }
 
 export interface Article {
