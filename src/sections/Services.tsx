@@ -15,8 +15,17 @@ export const Services = () => (
       <div className="mb-20 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service, i) => (
           <ScrollReveal key={service.id} delay={i * 0.08}>
-            <div className="glass-card group h-full rounded-xl p-6 transition-all hover:-translate-y-1 hover:border-primary/30">
-              <div className="mb-4 inline-flex rounded-lg bg-primary/10 p-3 text-primary">
+            <div
+              className={`glass-card group relative h-full rounded-xl p-6 transition-all hover:-translate-y-1 hover:border-primary/30 ${
+                service.highlight ? "ring-2 ring-primary/40 shadow-[0_0_40px_-10px_hsl(var(--primary)/0.4)]" : ""
+              }`}
+            >
+              {service.highlight && (
+                <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary-foreground">
+                  Core Expertise
+                </span>
+              )}
+              <div className={`mb-4 inline-flex rounded-lg p-3 ${service.highlight ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"}`}>
                 <Icon name={service.icon} size={24} />
               </div>
               <h3 className="mb-2 text-lg font-semibold text-foreground">{service.title}</h3>
